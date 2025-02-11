@@ -10,6 +10,8 @@ function Product() {
         const {id} = useParams();
         const product= products[id];
         const navigate = useNavigate()
+        const filteredProducts = products.filter(product => product.category === product.category)
+        
     return (
         <div>
             <Helmet>
@@ -32,24 +34,35 @@ function Product() {
                             <PriceContainer>
                                 <Heading>{product.productName}</Heading>
                                 <ReviewContainer>
+                                    <ProductStar src={require(`../../assets/${product.star}`)}/>
                                     <Review>{product.review}</Review>
+                                    <span>|</span>
                                     {product.Stock === "In Stock" ? (<InStock>In Stock</InStock>) : (<StockOut> Stock Out</StockOut>)}
                                 </ReviewContainer>
                                 <ProductPrice>{product.price}</ProductPrice>
                                 <Details>PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.</Details>
                             </PriceContainer>
-                            {product.color ? (<ColorChange>Colours: {product.Color}</ColorChange>) : (<></>)}
+                            {product.color ? (<ColorChange>Colours: </ColorChange>) : (<></>)}
                             <Table>
                                 <Row>
-                                    <Icon/>
-                                    <Service>Free Delivery</Service>
-                                    <ServiceDetailsLink>Enter your postal code for Delivery Availability</ServiceDetailsLink>
+                                    <ServicesContainer>
+                                        <Icon src={require("../../assets/icon-delivery.svg").default}/>
+                                        <ServiceText>
+                                            <Service>Free Delivery</Service>
+                                            <ServiceDetailsLink>Enter your postal code for Delivery Availability</ServiceDetailsLink>
+                                        </ServiceText>
+                                    </ServicesContainer>
                                 </Row>
                                 <Row>
-                                    <Icon/>
-                                    <Service>Return Delivery</Service>
-                                    <ServiceDetails>Free 30 Days Delivery Returns.</ServiceDetails>
-                                    <ServiceDetailsLink> Details</ServiceDetailsLink>
+                                    <ServicesContainer>
+                                    <Icon src={require("../../assets/Icon-return.svg").default}/>
+                                        <ServiceText>
+                                            <Service>Return Delivery</Service>
+                                            <ServiceDetails>Free 30 Days Delivery Returns.</ServiceDetails>
+                                            <ServiceDetailsLink> Details</ServiceDetailsLink>
+                                        </ServiceText>
+                                    </ServicesContainer>
+                                    
                                 </Row>
                             </Table>
                         </ProductTextContainer>
@@ -140,30 +153,107 @@ const ProductNameProduct = styled(Link)`
 `;
 const ProductDetails = styled.div`
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
 `;
 const ImageContainer = styled.div`
     width: 50%;
     height: 600px;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
-const ProductTextContainer = styled.div``;
+const ProductTextContainer = styled.div`
+    margin: 5rem;
+`;
 const Image = styled.img`
-    width: 100%;
-    height: 100%;
+    width: 446px;
+    height: 315px;
 `;
-const ReviewContainer = styled.div``;
-const Review = styled.div``;
-const Heading = styled.h3``;
-const InStock = styled.span``;
-const StockOut = styled.span``;
-const ProductPrice = styled.p``;
-const Details = styled.div``;
-const PriceContainer = styled.span``;
+const Heading = styled.h3`
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 3%;
+
+`;
+const ReviewContainer = styled.div`
+    display: flex;
+    margin: 5px;
+`;
+const Review = styled.div`
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000AD;
+    margin: 5px;
+`;
+const ProductStar = styled.img`
+    margin-right: 5px;
+    display: block;
+`
+const InStock = styled.span`
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #00FF66;
+    margin-left: 15px ;
+    margin-top: 5px;
+`;
+const StockOut = styled.span`
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: red;
+    margin-left: 15px ;
+    margin-top: 5px;
+`;
+const ProductPrice = styled.span`
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 3%;
+`;
+const Details = styled.p`
+    margin: 5px 0;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+`;
+const PriceContainer = styled.div`
+    border-bottom: 1px solid #000000AD;
+    width: 52%;
+`;
 const ColorChange = styled.div``;
-const Table = styled.div``;
-const Row = styled.div``;
-const Icon = styled.img``;
-const Service = styled.div``;
+const Table = styled.div`
+    width: 52%;
+    border: 1px solid #00000080;
+    margin: 3rem 0;
+`;
+const Row = styled.div`
+    display: flex;
+    margin: 10px 0;
+    &:first-child{
+        border-bottom: 1px solid ;
+    }
+`;
+const ServiceText = styled.div``;
+const Icon = styled.img`
+    margin: 0 5px;
+`;
+const Service = styled.span`
+    
+`;
 const ServiceDetailsLink = styled(Link)``;
 const ServiceDetails = styled.span``;
 const Top = styled.div``;
@@ -206,6 +296,10 @@ const Item = styled.li`
             display: flex;
         }
     }
+`;
+const ServicesContainer = styled.div`
+    margin-bottom: 15px;
+    display: flex;
 `;
 const IconContainer = styled.div`
     width: 34px;
@@ -258,11 +352,6 @@ const Count = styled.span`
     font-weight: 600;
     line-height: 21px;
     color: #0000004D;
-`;
-const HomeProducts = styled.div`
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 5rem;
 `;
 
 
