@@ -35,14 +35,13 @@ function Product() {
                                 <Heading>{product.productName}</Heading>
                                 <ReviewContainer>
                                     <ProductStar src={require(`../../assets/${product.star}`)}/>
-                                    <Review>{product.review}</Review>
-                                    <span>|</span>
+                                    <Review>{`${product.review}    |`}</Review>
                                     {product.Stock === "In Stock" ? (<InStock>In Stock</InStock>) : (<StockOut> Stock Out</StockOut>)}
                                 </ReviewContainer>
                                 <ProductPrice>{product.price}</ProductPrice>
                                 <Details>PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.</Details>
                             </PriceContainer>
-                            {product.color ? (<ColorChange>Colours: </ColorChange>) : (<></>)}
+                            {product.color ? (<ColorChange>Colours:  {product.color} </ColorChange>) : (<></>)}
                             <Table>
                                 <Row>
                                     <ServicesContainer>
@@ -69,7 +68,7 @@ function Product() {
                     </ProductDetails>
                     <ProductsNav>
                         <Top>
-                            <Icon />
+                            <Icon src={require("../../assets/Red.svg").default}/>
                             <RedText>Related Item</RedText>
                         </Top>
                         <Bottom>
@@ -158,7 +157,7 @@ const ProductDetails = styled.div`
     justify-content: space-between;
 `;
 const ImageContainer = styled.div`
-    width: 50%;
+    width: 70%;
     height: 600px;
     background-color: #F5F5F5;
     border-radius: 4px;
@@ -167,7 +166,8 @@ const ImageContainer = styled.div`
     align-items: center;
 `;
 const ProductTextContainer = styled.div`
-    margin: 5rem;
+    width: 30%;
+    margin: auto 2rem;
 `;
 const Image = styled.img`
     width: 446px;
@@ -178,20 +178,22 @@ const Heading = styled.h3`
     font-weight: 600;
     font-size: 24px;
     line-height: 24px;
-    letter-spacing: 3%;
-
+    white-space: nowrap;
 `;
 const ReviewContainer = styled.div`
     display: flex;
     margin: 5px;
 `;
-const Review = styled.div`
+const Review = styled.span`
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
     color: #000000AD;
-    margin: 5px;
+    margin-top: 10px;
+    white-space: nowrap;
+    margin-right: 10px;
+
 `;
 const ProductStar = styled.img`
     margin-right: 5px;
@@ -203,8 +205,10 @@ const InStock = styled.span`
     font-size: 14px;
     line-height: 21px;
     color: #00FF66;
-    margin-left: 15px ;
-    margin-top: 5px;
+    margin-left: 5px ;
+    margin-top: 10px;
+    white-space: nowrap;
+
 `;
 const StockOut = styled.span`
     font-family: 'Poppins';
@@ -212,8 +216,10 @@ const StockOut = styled.span`
     font-size: 14px;
     line-height: 21px;
     color: red;
-    margin-left: 15px ;
-    margin-top: 5px;
+    margin-left: 5px ;
+    margin-top: 10px;
+    white-space: nowrap;
+
 `;
 const ProductPrice = styled.span`
     font-family: 'Inter';
@@ -232,11 +238,10 @@ const Details = styled.p`
 `;
 const PriceContainer = styled.div`
     border-bottom: 1px solid #000000AD;
-    width: 52%;
+    
 `;
 const ColorChange = styled.div``;
 const Table = styled.div`
-    width: 52%;
     border: 1px solid #00000080;
     margin: 3rem 0;
 `;
@@ -251,14 +256,38 @@ const ServiceText = styled.div``;
 const Icon = styled.img`
     margin: 0 5px;
 `;
-const Service = styled.span`
-    
+const Service = styled.div`
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
 `;
-const ServiceDetailsLink = styled(Link)``;
-const ServiceDetails = styled.span``;
-const Top = styled.div``;
+const ServiceDetailsLink = styled(Link)`
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+    white-space: nowrap;
+`;
+const ServiceDetails = styled.span`
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+    `;
+const Top = styled.div`
+    margin: 3rem 0;
+`;
 const Bottom = styled.div``;
-const RedText = styled.span``;
+const RedText = styled.span`
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #DB4444;
+    `;
 const ProductsNav = styled.div``;
 const ProductList = styled.ul`
     width: 80%;
