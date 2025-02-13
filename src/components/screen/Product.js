@@ -5,17 +5,18 @@ import {products} from '../../data/Products'
 import {Link, useParams, useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import { HelmetProvider as Helmet } from 'react-helmet-async'
+import Footer from '../includes/Footer'
 
 function Product() {
         const {id} = useParams();
         const product= products[id];
         const navigate = useNavigate()
-        const filteredProducts = products.filter(product => product.category === product.category)
-        
+        const FavIcon = require('../../assets/Exclusive.svg').default
     return (
         <div>
             <Helmet>
-
+                <link rel='icon' href={FavIcon}/>
+                <title>{product.productName}</title>
             </Helmet>
             <AnnouncementBar/>
             <Header/>
@@ -73,7 +74,7 @@ function Product() {
                         </Top>
                         <Bottom>
                             <ProductList>
-                                {products.map(product =>( <Item key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
+                                {products.slice((product.id + 3),(product.id + 7)).map(product =>( <Item key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
                                                                         <ProductImgContainer>
                                                                             <ProductImg src={require(`../../assets/${product.productImg}`)} />
                                                                             <IconContainer>
@@ -109,6 +110,7 @@ function Product() {
                     </ProductsNav>
                 </ProductContainer>
             </ProductMain>
+            <Footer/>
         </div>
     )
 }
@@ -122,7 +124,6 @@ const ProductContainer = styled.div`
     margin: 3rem auto;
 `;
 const Nav = styled.nav`
-    width: 336px;
     display: flex;
     gap: 5px;
 `;
@@ -133,6 +134,13 @@ const Home = styled(Link)`
     line-height: 21px;
     text-decoration: none;
     color: #0000004D;
+    white-space: nowrap;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+    @media (max-width: 425px) {
+        font-size: 10px;
+    }
 `;
 const Category = styled(Link)`
     font-family: 'Poppins';
@@ -141,6 +149,12 @@ const Category = styled(Link)`
     line-height: 21px;
     text-decoration: none;
     color: #0000004D;
+    white-space: nowrap;@media (max-width: 768px) {
+        font-size: 12px;
+    }
+    @media (max-width: 425px) {
+        font-size: 10px;
+    }
 `;
 const ProductNameProduct = styled(Link)`
     font-family: 'Poppins';
@@ -149,12 +163,27 @@ const ProductNameProduct = styled(Link)`
     line-height: 21px;
     text-decoration: none;
     color: #000000;
+    white-space: nowrap;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+    @media (max-width: 425px) {
+        font-size: 10px;
+    }
 `;
 const ProductDetails = styled.div`
     width: 100%;
     margin-top: 5rem;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 768px) {
+        justify-content: start;
+        gap: 30px;
+    }
+    @media (max-width: 425px) {
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
 `;
 const ImageContainer = styled.div`
     width: 70%;
@@ -164,14 +193,33 @@ const ImageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+        width: 60%;
+        height: 350px;
+    }
+    @media (max-width: 425px) {
+        width: 100%;
+    }
 `;
 const ProductTextContainer = styled.div`
     width: 30%;
     margin: auto 2rem;
+    @media (max-width: 768px) {
+        width: 40%;
+        margin: 0;
+        height: 300px;
+    @media (max-width: 425px) {
+        width: 100%;
+    }
+    }
 `;
 const Image = styled.img`
     width: 446px;
     height: 315px;
+    @media (max-width: 768px) {
+        width: 55%;
+        height: 250px;
+    }
 `;
 const Heading = styled.h3`
     font-family: 'Inter';
@@ -179,10 +227,16 @@ const Heading = styled.h3`
     font-size: 24px;
     line-height: 24px;
     white-space: nowrap;
+    @media (max-width: 768px) {
+        font-size:18px;
+    }
 `;
 const ReviewContainer = styled.div`
     display: flex;
     margin: 5px;
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
 `;
 const Review = styled.span`
     font-family: 'Poppins';
@@ -193,11 +247,19 @@ const Review = styled.span`
     margin-top: 10px;
     white-space: nowrap;
     margin-right: 10px;
+    @media (max-width: 768px) {
+        font-size: 12px;
+        margin-top: 5px;
+    }
 
 `;
 const ProductStar = styled.img`
     margin-right: 5px;
     display: block;
+    @media (max-width: 768px) {
+        width: 78px;
+        
+    }
 `
 const InStock = styled.span`
     font-family: 'Poppins';
@@ -208,6 +270,10 @@ const InStock = styled.span`
     margin-left: 5px ;
     margin-top: 10px;
     white-space: nowrap;
+    @media (max-width: 768px) {
+        font-size: 12px;
+        margin-top: 5px;
+    }
 
 `;
 const StockOut = styled.span`
@@ -219,6 +285,11 @@ const StockOut = styled.span`
     margin-left: 5px ;
     margin-top: 10px;
     white-space: nowrap;
+    @media (max-width: 768px) {
+        font-size: 12px;
+        margin-top: 5px;
+        margin-left: 0;
+    }
 
 `;
 const ProductPrice = styled.span`
@@ -227,6 +298,9 @@ const ProductPrice = styled.span`
     font-size: 24px;
     line-height: 24px;
     letter-spacing: 3%;
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
 `;
 const Details = styled.p`
     margin: 5px 0;
@@ -235,21 +309,36 @@ const Details = styled.p`
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0%;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+    @media (max-width: 425px) {
+        width: 100%;
+    }
 `;
 const PriceContainer = styled.div`
     border-bottom: 1px solid #000000AD;
-    
+    @media (max-width: 425px) {
+        width: 100%;
+    }
 `;
-const ColorChange = styled.div``;
+const ColorChange = styled.div`
+`;
 const Table = styled.div`
     border: 1px solid #00000080;
     margin: 3rem 0;
+    @media (max-width: 768px) {
+        margin: 1rem 0;
+    }
 `;
 const Row = styled.div`
     display: flex;
     margin: 10px 0;
     &:first-child{
         border-bottom: 1px solid ;
+    }
+    @media (max-width: 768px) {
+        height: 50px;
     }
 `;
 const ServiceText = styled.div``;
@@ -261,6 +350,10 @@ const Service = styled.div`
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
+    @media (max-width: 768px) {
+        font-size: 12px;
+        line-height: 12px;
+    }
 `;
 const ServiceDetailsLink = styled(Link)`
     font-family: 'Poppins';
@@ -269,6 +362,15 @@ const ServiceDetailsLink = styled(Link)`
     line-height: 18px;
     color: #000;
     white-space: nowrap;
+    @media (max-width: 1024px) {
+        white-space: normal;
+        font-size: 10px;
+        line-height: 14px;
+    }
+    @media (max-width: 768px) {
+        white-space: nowrap;
+        font-size: 8px;
+    }
 `;
 const ServiceDetails = styled.span`
     font-family: 'Poppins';
@@ -276,6 +378,10 @@ const ServiceDetails = styled.span`
     font-size: 12px;
     line-height: 18px;
     color: #000;
+    @media (max-width: 768px) {
+        line-height:14px;
+        font-size: 10px;
+    }
     `;
 const Top = styled.div`
     margin: 3rem 0;
@@ -290,12 +396,19 @@ const RedText = styled.span`
     `;
 const ProductsNav = styled.div``;
 const ProductList = styled.ul`
-    width: 80%;
+    width: 100%;
     margin: 3rem auto;
     display: grid;
-    grid-template-columns: repeat(4,270px);
+    grid-template-columns: repeat(4,250px);
     justify-content: space-between;
     padding: 0;
+    @media (max-width:1024px) {
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 100px;
+        }
+    @media (max-width: 425px) {
+        grid-template-columns: repeat(1,1fr);
+    }
 
 `;
 const AddTo = styled.div`

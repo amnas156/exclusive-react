@@ -74,7 +74,23 @@ const Products = styled.ul`
     grid-template-columns: repeat(4,270px);
     justify-content: space-between;
     padding: 0;
-
+    border-bottom: 0.5px solid #0000004D;
+    @media (max-width:1024px) {
+        grid-template-columns: repeat(3, 250px);
+    }
+    @media (max-width:768px) {
+        grid-template-columns: repeat(2, 250px);
+    }
+    @media (max-width:425px) {
+        grid-template-columns: repeat(2, 170px);
+        width: 90%;
+    }
+    @media (max-width:375px) {
+        grid-template-columns: repeat(2, 150px);
+    }
+    @media (max-width:320px) {
+        grid-template-columns: repeat(2, 130px);
+    }
 `;
 const AddTo = styled.div`
     width: 100%;
@@ -97,20 +113,36 @@ const AddText = styled.span`
 const Product = styled.li`
     list-style: none;
     height: 322px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     &:hover{
         ${AddTo} {
             display: flex;
         }
+        
     }
+    @media (max-width:375px) {
+            height: 210px;
+        }
+        @media (max-width:320px) {
+            height: 230px;
+        }
 `;
+
 const IconContainer = styled.div`
     width: 34px;
     position: absolute;
     top: 15px;
     right: 15px;
+    @media (max-width:425px) {
+        display: none;
+    }
 `;
-const TextContainer = styled.div``;
+const TextContainer = styled.div`
+    @media (max-width:425px) {
+        width: 15px;
+        height: 15px;
+    }
+`;
 const ProductImgContainer = styled.div`
     height: 250px;
     background-color: #F5F5F5;
@@ -119,6 +151,13 @@ const ProductImgContainer = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
+    @media (max-width:425px) {
+        height: 180px;
+        margin-bottom: 0;
+    }
+    @media (max-width:375px) {
+        height: 130px;
+    }
 `;
 const NewButton = styled.div`
     position: absolute;
@@ -127,12 +166,25 @@ const NewButton = styled.div`
 `
 const ProductImg = styled.img`
     margin: auto 0;
+    @media (max-width:425px) {
+        height: 100px;
+    } 
+    @media (max-width:375px) {
+        height: 60px;
+    }
+    @media (max-width:375px) {
+        height: 50px;
+    }
 `;
 const ProductName = styled.span`
     font-family: 'Poppins';
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
+    @media (max-width:425px) {
+        font-size: 12px;
+        white-space: nowrap;
+    }
 `;
 const PriceTag = styled.div`
     display: flex;
@@ -145,9 +197,15 @@ const Price = styled.span`
     font-weight: 500;
     line-height: 24px;
     color: #DB4444;
+    @media (max-width:375px) {
+        font-size: 12px;
+    }
 `;
 const Star = styled.img`
     display: block;
+    @media (max-width:375px) {
+        width: 75px;
+    }
 `;
 const Count = styled.span`
     font-family: 'Poppins';
@@ -155,6 +213,9 @@ const Count = styled.span`
     font-weight: 600;
     line-height: 21px;
     color: #0000004D;
+    @media (max-width:375px) {
+        font-size: 10px;
+    }
 `;
 const HomeProducts = styled.div`
     width: 80%;

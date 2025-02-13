@@ -193,19 +193,27 @@ function Main() {
     )
 }
 const SpotLight = styled.div`   
-    width: 100%;
+    overflow-x: hidden;
 `;
 const SpotLightWrapper = styled.div`
     width: 80%;
-    height: 453px;
+    height: 458px;
     display: flex;
     margin: 30px auto;
     background-color: #000;
     border-radius: 10px;
+    @media (max-width:425px) {
+        height: 100vh;
+        flex-wrap: wrap;
+        margin: 3rem;
+    }
 `;
 const SpotLightContent = styled.div`
     margin: auto 64px;
     color: #FAFAFA;
+    @media (max-width:425px) {
+        margin: 3rem;
+    }
 `;
 const SpotLightIphone = styled.div`
     display: flex;
@@ -230,6 +238,16 @@ const SpotLightHeading = styled.h1`
     line-height: 60px;
     letter-spacing: 0.04em;
     margin: 2rem 0;
+    @media (max-width:768px) {
+        font-size: 36px;
+    }
+    @media (max-width:375px) {
+        font-size: 32px;
+    }
+    @media (max-width:375px) {
+        width: 210px;
+        font-size: 28px;
+    }
 `;
 const SpotLightButton = styled.div`
     display: flex;
@@ -250,16 +268,19 @@ const ButtonIcon = styled.img`
     display: block;
 `;
 const SpotLightImage = styled.div`
-    
+    display: block;
     `;
 const PhoneImg = styled.img`
-    display: block;
+    width: 100%;
     border-radius: 10px;
-    height: auto;
+    @media (max-width:768px) {
+        height: 100%;
+    }
 `;
 const Categories = styled.div`
     width: 80%;
     margin: 0 auto;
+    overflow-x: hidden;
 `;
 const CategoriesTop = styled.div`
     display: flex;
@@ -277,6 +298,9 @@ const RedText = styled.span`
     line-height: 20px;
     color: #DB4444;
     margin: auto 0;
+    @media (max-width: 425px) {
+        font-size: 14px;
+    }
 `;
 const CategoriesList = styled.div`
     width: 100%;
@@ -290,16 +314,38 @@ const CategoriesTittle = styled.h5`
     line-height: 48px;
     letter-spacing: 0.04em;
     margin-bottom: 1rem;
+    @media (max-width: 425px) {
+        font-size: 28px;
+    }
+    @media (max-width: 320px) {
+        font-size: 24px;
+    }
 `;
 const CategoryList = styled.ul`
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6,170px);
     justify-content: space-between;
     padding-left: 0;
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(3,170px);
+        row-gap: 25px;
+    }
+    @media (max-width: 425px) {
+        grid-template-columns: repeat(2,150px);
+        row-gap: 25px;
+    }
+    @media (max-width: 375px) {
+        grid-template-columns: repeat(2,130px);
+        column-gap: 25px;
+    }
+    @media (max-width: 320px) {
+        grid-template-columns: repeat(2,120px);
+        column-gap: 10px;
+    }
     
 `;
 const Category = styled.li`
-    width: 170px;
     height: 145px;
     list-style: none;
     border: 1px solid #0000004D;
@@ -331,7 +377,19 @@ const Products = styled.ul`
     justify-content: space-between;
     padding: 0;
     border-bottom: 0.5px solid #0000004D;
-
+    @media (max-width:1024px) {
+        grid-template-columns: repeat(3, 250px);
+    }
+    @media (max-width:768px) {
+        grid-template-columns: repeat(2, 250px);
+    }
+    @media (max-width:425px) {
+        grid-template-columns: repeat(2, 170px);
+        width: 90%;
+    }
+    @media (max-width:375px) {
+        grid-template-columns: repeat(2, 150px);
+    }
 `;
 const AddTo = styled.div`
     width: 100%;
@@ -354,20 +412,42 @@ const AddText = styled.span`
 const Product = styled.li`
     list-style: none;
     height: 322px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     &:hover{
         ${AddTo} {
             display: flex;
         }
     }
+    @media (max-width:1024px) {
+        &:last-child{
+        display: none;
+    }
+    &:nth-child(7){
+        display: none;
+    }
+    }
+    @media (max-width:375px) {
+            height: 210px;
+        }
+        @media (max-width:320px) {
+            height: 230px;
+        }
 `;
 const IconContainer = styled.div`
     width: 34px;
     position: absolute;
     top: 15px;
     right: 15px;
+    @media (max-width:425px) {
+        display: none;
+    }
 `;
-const TextContainer = styled.div``;
+const TextContainer = styled.div`
+    @media (max-width:425px) {
+        width: 15px;
+        height: 15px;
+    }
+`;
 const ProductImgContainer = styled.div`
     height: 250px;
     background-color: #F5F5F5;
@@ -376,6 +456,9 @@ const ProductImgContainer = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
+    @media (max-width:425px) {
+        height: 180px;
+    }
 `;
 const NewButton = styled.div`
     position: absolute;
@@ -384,12 +467,19 @@ const NewButton = styled.div`
 `
 const ProductImg = styled.img`
     margin: auto 0;
+    @media (max-width:425px) {
+        height: 100px;
+    }
 `;
 const ProductName = styled.span`
     font-family: 'Poppins';
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
+    @media (max-width:425px) {
+        font-size: 12px;
+        white-space: nowrap;
+    }
 `;
 const PriceTag = styled.div`
     display: flex;
@@ -402,9 +492,15 @@ const Price = styled.span`
     font-weight: 500;
     line-height: 24px;
     color: #DB4444;
+    @media (max-width:375px) {
+        font-size: 12px;
+    }
 `;
 const Star = styled.img`
     display: block;
+    @media (max-width:375px) {
+        width: 75px;
+    }
 `;
 const Count = styled.span`
     font-family: 'Poppins';
@@ -412,6 +508,9 @@ const Count = styled.span`
     font-weight: 600;
     line-height: 21px;
     color: #0000004D;
+    @media (max-width:375px) {
+        font-size: 12px;
+    }
 `;
 const View = styled(Link)`
     width: 234px;
@@ -435,15 +534,23 @@ const ServicesContainer = styled.div`
 const Services = styled.ul`
     width: 70%;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    @media (max-width:1024px) {
+        width: 80%;
+    }
+    @media (max-width:425px) {
+        grid-template-columns: repeat(1,1fr);
+        row-gap: 20px;
+    }
+
 
 `;
 const Service = styled.li`
     list-style: none;
-    width: 30%;
     align-items: center;
     text-align: center;
+    
 `;
 const ServiceImgContainer = styled.div`
     margin-bottom: 1rem;
@@ -456,14 +563,24 @@ const ServiceName = styled.span`
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
+    @media (max-width:768px) {
+        font-size: 18px;
+    }
 
 `;
 const ServiceImg = styled.img`
+    @media (max-width:768px) {
+        width: 80px;
+    }
+
 `;
 const ServiceDescription = styled.span`
     font-family: 'Poppins';
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
+    @media (max-width:768px) {
+        font-size: 10px;
+    }
 `;
 export default Main

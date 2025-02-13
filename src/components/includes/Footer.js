@@ -137,20 +137,31 @@ const FooterContainer = styled.div`
     padding-top: 3rem ;
     background-color: #000;
     text-align: center;
+    overflow-x: hidden;
 `;
 const FooterWrapper = styled.div`
     width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+    margin: auto ;
+    display: grid;
+    grid-template-columns: repeat(5,auto);
     text-align: left;
+    @media (max-width:768px) {
+            grid-template-columns: repeat(3,auto);
+        }
+    @media (max-width:768px) {
+        grid-template-columns: repeat(2,auto);
+
+    }
+    @media (max-width:425px) {
+        grid-template-columns: repeat(1,auto);
+        margin: 0 auto;
+    }
 `;
 const FooterItem = styled.ul`
     padding: 0;
     &:first-child{
         width: 230px;
     }
-    
 `;
 const FooterHeading = styled.h1`
     font-family: 'Inter';
@@ -167,6 +178,9 @@ const FooterSubHeading = styled.span`
     font-weight: 500;
     line-height: 28px;
     color: #FAFAFA;
+    @media (max-width:1024px) {
+            font-size: 16px;
+        }
 `;
 const FooterText2 = styled.span`
     font-family: 'Poppins';
@@ -174,7 +188,10 @@ const FooterText2 = styled.span`
     font-weight: 500;
     line-height: 18px;
     color: #FAFAFA;
-`
+    @media (max-width:1024px) {
+            font-size: 10px;
+        }
+`;
 const InputBox = styled.div`
     display: flex;
     background: transparent;
@@ -229,7 +246,12 @@ const FooterText = styled.span`
     font-weight: 400;
     line-height: 24px;
     color: #FAFAFA;
+    @media (max-width:1024px) {
+            font-size: 12px;
+        }
+    @media (max-width:425px) {
+        font-size: 14px;
+    }
     
 `;
-
 export default Footer

@@ -13,6 +13,9 @@ function Header() {
             <HeaderContainer>
                 <NavBar>
                     <Item>
+                        <Menu src={require("../../assets/menu.svg").default}/>
+                    </Item>
+                    <Item>
                         <Logo>Exclusive</Logo>
                     </Item>
                     <Item>
@@ -39,6 +42,7 @@ function Header() {
                     </Item>
                     <Item>
                         <Cart>
+                            <Icon src={Search}/>
                             <Icon src={FavIcon}/>
                             <Icon src={CartIcon}/>
                         </Cart>
@@ -51,18 +55,30 @@ function Header() {
 const HeaderContainer = styled.div`
     width: 100%;
     border-bottom: 0.5px solid #0000004D;
+    overflow-x: hidden;
     
 `;
 const NavBar = styled.ul`
     width: 80%;
     margin: 40px auto 0 auto ; 
     display: flex;
+    padding-left: 0;
     justify-content: space-between;
+    @media (max-width:768px) {
+        width: 90%;
+    }
 `;
 const Item = styled.li`
     list-style: none;
     height: 40px;
-    
+`;
+const Menu = styled.img`
+    display: none;
+    @media (max-width:425px) {
+        display: block;
+        margin: 9px 0;
+        
+    }
 `;
 const Logo = styled.h1`
     font-family: 'Inter';
@@ -75,11 +91,16 @@ const NavList = styled.ul`
     width: 367px;
     display: flex;
     justify-content: space-between;
+    @media (max-width:1024px) {
+        width: 300px;
+    }
+    @media (max-width:425px) {
+        display: none;
+    }
 `;
 const NavItem = styled.li`
     margin: 10px 0;
     list-style: none;
-    
 `;
 const Nav = styled(Link)`
     font-family: 'Poppins';
@@ -91,6 +112,9 @@ const Nav = styled(Link)`
     &:hover{
         text-decoration: underline;
     }
+    @media (max-width:1024px) {
+        font-size: 14px;
+    }
 `;
 const SearchBar = styled.div`
     width: 236px;
@@ -98,6 +122,9 @@ const SearchBar = styled.div`
     background: #F5F5F5;
     border-radius: 4px;
     position: relative;
+    @media (max-width:768px) {
+        display: none;
+    }
 `;
 const Cart = styled.div`
     display: flex;
@@ -122,6 +149,12 @@ const SearchIcon = styled.img`
 `;
 const Icon = styled.img`
     margin-left: 20px;
+    &:first-child{
+        display: none;
+        @media (max-width:768px) {
+        display: block;
+    }
+    }
 `;
 
 export default Header
